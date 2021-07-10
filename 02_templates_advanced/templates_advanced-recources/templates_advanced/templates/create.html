@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pythons Wiki</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-brand">PythonsWiki</div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create' %}">Add new Python</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="text-center">Create Python</h1>
+    <form class="col-lg-6 offset-lg-3" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label for="image">Image URL</label>
+            {{ form.image }}
+        </div>
+        <input type="submit" value="Create" class="btn btn-primary">
+    </form>
+    <div class="card-footer navbar-dark bg-dark footer fixed-bottom text-center">
+      <small class="text-light text-center">Templates Advanced Exercise @SoftUni</small>
+    </div>
+</body>
+</html>

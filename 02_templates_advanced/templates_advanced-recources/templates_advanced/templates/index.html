@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pythons Wiki</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-brand">PythonsWiki</div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create' %}">Add new Python</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="text-center">All Pythons</h1>
+    <div class="d-flex p-3">
+        {% for python in pythons %}
+        <div class="card m-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ python.image }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ python.name }}</h5>
+                <p class="card-text">{{ python.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="card-footer navbar-dark bg-dark footer fixed-bottom text-center">
+      <small class="text-light text-center">Templates Advanced Exercise @SoftUni</small>
+    </div>
+</body>
+</html>
+
