@@ -9,15 +9,15 @@ def index(req):
     return render(req, 'index.html', {'pythons': pythons})
 
 
-def create(req):
-    if req.method == 'GET':
+def create(request):
+    if request.method == 'GET':
         form = PythonCreateForm()
-        return render(req, 'create.html', {'form': form})
+        return render(request, 'create.html', {'form': form})
     else:
-        data = req.POST
-        form = PythonCreateForm(data)
+        form = PythonCreateForm(request.POST, request.FILES)
         print(form)
         if form.is_valid():
-            python = form.save()
-            python.save()
+            form.save()
             return redirect('index')
+
+        return render(request, 'create.html', {'form': form})
