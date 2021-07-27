@@ -7,4 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pythons.pythons_app.urls')),
     path('auth/', include('pythons.pythons_auth.urls')),
+    path('profles/', include('pythons.profiles.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
